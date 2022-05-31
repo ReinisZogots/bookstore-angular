@@ -1,0 +1,30 @@
+.book {
+  background: cornflowerblue;
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 10px;
+
+  &__cover {
+    width: 100%;
+  }
+  &-text-container {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-family: "Montserrat";
+    font-size: 10px;
+    max-width: 50ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__price {
+    padding-left: 10px;
+    font-family: "Axis";
+    white-space: nowrap;
+  }
+}
