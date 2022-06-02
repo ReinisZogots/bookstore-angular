@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Product } from '../../Product';
 import { PRODUCTS } from '../../mock-products';
 
@@ -7,10 +7,8 @@ import { PRODUCTS } from '../../mock-products';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
-  products: Product[] = PRODUCTS;
+export class ProductsComponent {
+  public products: Product[] = PRODUCTS;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }
