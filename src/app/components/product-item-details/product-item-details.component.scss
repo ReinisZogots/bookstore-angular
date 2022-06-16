@@ -1,9 +1,7 @@
 .book {
-  background: cornflowerblue;
+  display: block;
   margin: 5px;
   padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
 
   &__cover {
     width: 100%;
@@ -14,13 +12,18 @@
     justify-content: space-between;
   }
 
+  &__description {
+    margin: 5px;
+    font-family: "Axis";
+    font-size: 12px;
+  }
+
   &__title {
+    text-align: center;
     font-family: "Montserrat";
-    font-size: 10px;
+    font-size: 14px;
     max-width: 50ch;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
   }
 
   &__price {
@@ -28,4 +31,19 @@
     font-family: "Axis";
     white-space: nowrap;
   }
+
+  &__amount {
+    width: 70px;
+  }
+
+  &__rating {
+    height: 20px;
+  }
+}
+input[type="number"]::-webkit-inner-spin-button {
+  opacity: 1;
+}
+.addToCart {
+  text-align: center;
+  width: 200px;
 }
