@@ -1,14 +1,14 @@
 <div class="book" *ngIf="product">
   <h3 class="book__title">{{product.title}}</h3>
   <img class="book__cover" src={{product.path}} alt="book cover picture">
-  <P class="book__description">{{product.description}}</P>
-    <div class="book-text-container">
-      <h4>Amount:</h4>
-      <span class="book__price">{{product.price}} €</span>
-    </div>
-    <div class="book-text-container">
-      <input class="book__amount" type="number" value="1" max="999">
-      <img class="book__rating" src="/assets/icons/5-star-rating.svg" alt="five rating stars">
-    </div>
-    <button class="addToCart">Add to cart</button>
+  <p class="book__description">{{product.description}}</p>
+  <div class="book-text-container">
+    <h4 class="subheader">Amount:</h4>
+    <span class="book__price">{{product.price}} €</span>
+  </div>
+  <div class="book-text-container">
+    <input class="book__amount" type="number" value="0" min="0" max="10">
+    <img class="book__rating" src="/assets/icons/5-star-rating.svg" alt="five rating stars">
+  </div>
+  <button class="addToCart">Add to cart</button>
 </div>
