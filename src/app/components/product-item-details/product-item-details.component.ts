@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/Product';
 import { ProductService } from 'src/app/product.service';
-import { Location } from '@angular/common';
+import { CartService } from 'src/app/cart.service';
+import { Book } from 'src/app/shared/models/book';
 
 @Component({
   selector: 'app-product-item-details',
@@ -11,11 +12,12 @@ import { Location } from '@angular/common';
 })
 export class ProductItemDetailsComponent implements OnInit {
   @Input() product?: Product;
+  book!: Book;
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private location: Location
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -24,5 +26,9 @@ export class ProductItemDetailsComponent implements OnInit {
   getProduct() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.productService.getProduct(id).subscribe((x) => (this.product = x));
+  }
+
+  addToCart() {
+    this.cartService.addToCart(this.product);
   }
 }

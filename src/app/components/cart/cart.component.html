@@ -1,0 +1,19 @@
+<div *ngIf="cartNotEmpty; else cartIsEmpty" class="cart">
+  <div class="cart-item__container">
+    <div class="cart-item" *ngFor="let cartItem of cart.items">
+      <img class="book__cover" src={{cartItem.book.path}} alt="book cover picture">
+      <div class="book__title-price-container">
+        <h5 class="book__title">{{cartItem.book.title}}</h5>
+        <span class="book__price">{{cartItem.book.price}} €</span>
+      </div>
+      <div class="book__info-container">
+        <img (click)="removeFromCart(cartItem)" class="book__remove-icon" src="/assets/icons/close-icon.svg" alt="close icon">
+        <input class="book__amount" type="number" value={{cartItem.quantity}} min="0" max="10">
+      </div>
+    </div>
+  </div>
+  <h3>Total Cost</h3>
+  <div class="totalCost">{{cart.totalPrice}} €</div>
+  <button>Checkout</button>
+</div>
+<ng-template #cartIsEmpty> Cart Is Empty!</ng-template>
