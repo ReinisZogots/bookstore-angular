@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/Product';
 import { ProductService } from 'src/app/product.service';
 import { CartService } from 'src/app/cart.service';
-import { Location } from '@angular/common';
+import { Book } from 'src/app/shared/models/book';
 
 @Component({
   selector: 'app-product-item-details',
@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 })
 export class ProductItemDetailsComponent implements OnInit {
   @Input() product?: Product;
+  book!: Book;
 
   constructor(
     private productService: ProductService,
@@ -27,7 +28,7 @@ export class ProductItemDetailsComponent implements OnInit {
     this.productService.getProduct(id).subscribe((x) => (this.product = x));
   }
 
-  addToCart(product: Product) {
-    this.cartService.addToCart(product);
+  addToCart() {
+    this.cartService.addToCart(this.product);
   }
 }

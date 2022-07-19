@@ -1,28 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Product } from './Product';
+import { Book } from './shared/models/book';
+import { Cart } from './shared/models/Cart';
+import { CartItem } from './shared/models/CartItem';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  booksInCart: Product[] = [];
-  cartNotEmpty: boolean = false;
+  private cart: Cart = new Cart();
+  isCartNotEmpty: boolean = false;
   constructor() {}
 
-  addToCart(product: Product) {
-    this.booksInCart.push(product);
-    this.cartNotEmpty = true;
+  addToCart(book: Book): void {
+    let cartItem = this.cart.items.find((item) => item.book.id === book.id);
+    if (cartItem) {
+      this.changeQuantity(book.id, cartItem.quantity + 1);
+      return;
+    }
+    this.cart.items.push(new CartItem(book));
+    this.isCartNotEmpty = true;
   }
 
-  getItems() {
-    return this.booksInCart;
+  removeFromCart(productId: number): void {
+    this.cart.items = this.cart.items.filter(
+      (item) => item.book.id != productId
+    );
   }
 
-  // removeFromCart(product: Product) {
-  //   this.booksInCart.(product);
-  // }
+  changeQuantity(bookId: number, quantity: number) {
+    let cartItem = this.cart.items.find((item) => item.book.id === bookId);
+    if (!cartItem) return;
+    cartItem.quantity = quantity;
+  }
 
-  getBookPrice(product: Product) {
-    return;
+  getCart(): Cart {
+    return this.cart;
   }
 }

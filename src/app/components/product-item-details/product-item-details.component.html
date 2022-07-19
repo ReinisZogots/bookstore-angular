@@ -7,8 +7,8 @@
     <span class="book__price">{{product.price}} €</span>
   </div>
   <div class="book-text-container">
-    <input class="book__amount" type="number" value={{product.amount}} min="0" max="10">
+    <input class="book__amount" type="number" value="1" min="0" max="10">
     <img class="book__rating" src="/assets/icons/5-star-rating.svg" alt="five rating stars">
   </div>
-  <button class="addToCart" (click)="addToCart(product)" >Add to cart</button>
+  <button class="addToCart" (click)="addToCart()" >Add to cart</button>
 </div>
